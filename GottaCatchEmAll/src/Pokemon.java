@@ -1,7 +1,6 @@
 
 public class Pokemon {
 
-	
 	String name;
 	String type;
 	int hp;
@@ -48,10 +47,7 @@ public class Pokemon {
 		return this.hp;
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//Pokemon Pikachu = new Pokemon("Pikachu", "electric", 250, "thunder", "quick attack", "headbutt", "tackle");
-		//Pokemon Charizard = new Pokemon("Charizard", "fire", 400, "flamethrower", "fly", "aerial ace", "slash");
-
+		
 	}
 
 }
