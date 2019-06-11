@@ -44,6 +44,9 @@ public class Pokemon {
 	public String getMove4() {
 		return this.move4;
 	}
+	public int getHP() {
+		return this.hp;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//Pokemon Pikachu = new Pokemon("Pikachu", "electric", 250, "thunder", "quick attack", "headbutt", "tackle");
