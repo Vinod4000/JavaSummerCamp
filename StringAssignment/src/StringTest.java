@@ -52,7 +52,7 @@ public class StringTest {
     // 4.
     public static String removeDashes(String ssn) {
         String out = "";
-        //TODO: Complete function code
+        out = ssn.substring(0, 3) + ssn.substring(4, 6) + ssn.substring(7,11);
         
         return out;
     }
@@ -60,15 +60,22 @@ public class StringTest {
     // 5a and 5b.
     public static String changeDateFormat(String dateStr) {
         String out = "";
-        //TODO: Complete function code
-        
+        if (dateStr.charAt(0) != '0') {
+        	dateStr = "0" + dateStr;
+        }
+        if (dateStr.length() == 9) {
+        	dateStr = dateStr.substring(0,3) + "0" + dateStr.substring(3, dateStr.length());
+        }
+
+        out = dateStr.substring(3, 5) + "-" + dateStr.substring(0, 2) + "-" + dateStr.substring(6,10);
+
         return out;
     }
     
     // 6a.
     public static String lastFour(String ccNumber) {
         String out = "";
-        //TODO: Complete function code
+        out = ccNumber.substring(15, ccNumber.length());
         
         return out;
     }
@@ -76,7 +83,7 @@ public class StringTest {
     // 6b.
     public static String lastFive(String ccNumber) {
         String out = "";
-        //TODO: Complete function code
+        out = ccNumber.substring(13, 14) + lastFour(ccNumber);
         
         return out;
     }
@@ -84,17 +91,19 @@ public class StringTest {
     // 7.
     public static String scroll(String str) {
         String out = "";
-        //TODO: Complete function code
+        out = str.substring(1, str.length()) + str.substring(0,1);
         
         return out;
     }
     
     // 8.
     public static String removeComments(String str) {
-        String out = "";
-        //TODO: Complete function code
+        if (str.indexOf("/*") != -1 && str.indexOf("*/") != -1) {
+        	return str.substring(0, str.indexOf("/*")) + str.substring(str.indexOf("*/") + 2, str.length()); 
+        } else {
+        	return str;
+        }
         
-        return out;
     }
     
     // 9.
@@ -130,7 +139,31 @@ public class StringTest {
         System.out.println("Testing Number 3");
         String str = "hi";
         System.out.println(isPalindrome(str));
-
+        
+        System.out.println("Testing Number 4");
+        String ssn = "987-65-4321";
+        System.out.println(removeDashes(ssn));
+        
+        System.out.println("Testing Number 5");
+        String dateStr = "5/3/2017";
+        System.out.println(changeDateFormat(dateStr));
+        
+        System.out.println("Testing Number 6a");
+        String ccNumber = "4111 1111 1111 1111";
+        System.out.println(lastFour(ccNumber));
+        
+        System.out.println("Testing Number 6b");
+        String ccNumberb = "4111 1111 1112 1111";
+        System.out.println(lastFive(ccNumberb));
+        
+        System.out.println("Testing Number 7");
+        String scr = "hello";
+        System.out.println(scroll(scr));
+        
+        System.out.println("Testing Number 8");
+        String com = "he/*ll*/o";
+        System.out.println(removeComments(com));
+        
 
     }
 
