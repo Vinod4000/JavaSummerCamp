@@ -33,6 +33,7 @@ public class StringTest {
     // 3.
     public static boolean isPalindrome(String str) {
         //TODO: Complete function code
+    	str = str.toLowerCase();
         int length = str.length()-1;
     	boolean out = false;
         for (int count = 0; length >= count; count++) {
@@ -109,15 +110,26 @@ public class StringTest {
     // 9.
     public static String removeTag(String html) {
         String out = "";
-        //TODO: Complete function code
+        out = html.substring(3, html.length()-4);
         
         return out;
     }
     
     // 10.
     public boolean isValidISBN(String isbn) {
+    	int x = 0;
         boolean valid = true;
-        //TODO: Complete function code
+        String[] nums = new String[10];
+        for (int i = 0; i <= 10; i++) {
+        
+        	nums[i] = isbn.substring(i, i+1); 
+        	if (nums[i].toLowerCase().equals("x")) {
+        		nums[i] = "10";
+        	}
+        	x += Integer.parseInt(nums[i]) * (10-i);
+        }
+        valid = x % 11 == 0;
+
         
         return valid;
     }
@@ -137,7 +149,7 @@ public class StringTest {
         System.out.println(reverse(rev));
         
         System.out.println("Testing Number 3");
-        String str = "hi";
+        String str = "Racecar";
         System.out.println(isPalindrome(str));
         
         System.out.println("Testing Number 4");
@@ -163,6 +175,12 @@ public class StringTest {
         System.out.println("Testing Number 8");
         String com = "he/*ll*/o";
         System.out.println(removeComments(com));
+        
+        System.out.println("Testing Number 9");
+        String html = "<b>Strings are immutable</b>";
+        System.out.println(removeTag(html));
+        
+        
         
 
     }
