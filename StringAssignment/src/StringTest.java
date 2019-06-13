@@ -110,21 +110,36 @@ public class StringTest {
     // 9.
     public static String removeTag(String html) {
         String out = "";
-        out = html.substring(3, html.length()-4);
+        int startInd = html.indexOf("<");
+        int endInd = html.indexOf(">");
+        
+        int startInd2 = html.indexOf("<", startInd + 1);
+        int endInd2 = html.indexOf(">", endInd + 1);
+        
+        if (startInd == -1 || endInd == -1 || startInd2 == -1 || endInd2 == -1) {
+        	return html;
+        }
+        
+        out = html.substring(endInd + 1, startInd2);
+        
         
         return out;
     }
     
     // 10.
-    public boolean isValidISBN(String isbn) {
+    public static boolean isValidISBN(String isbn) {
     	int x = 0;
-        boolean valid = true;
-        String[] nums = new String[10];
-        for (int i = 0; i <= 10; i++) {
+        boolean valid = false;
+        String[] nums = new String[10/*isbn.length()*/];
+        for (int i = 0; i < 10 /*nums.length*/; i++) {
         
-        	nums[i] = isbn.substring(i, i+1); 
-        	if (nums[i].toLowerCase().equals("x")) {
+        	nums[i] = isbn.substring(i, i + 1); 
+        	if (i == nums.length - 1 && nums[i].toLowerCase().equals("x")) {
         		nums[i] = "10";
+        	}
+        	if (nums[i].toLowerCase().equals("x")) {
+        		valid = false;
+        		return valid;
         	}
         	x += Integer.parseInt(nums[i]) * (10-i);
         }
@@ -157,7 +172,7 @@ public class StringTest {
         System.out.println(removeDashes(ssn));
         
         System.out.println("Testing Number 5");
-        String dateStr = "5/3/2017";
+        String dateStr = "5/03/2017";
         System.out.println(changeDateFormat(dateStr));
         
         System.out.println("Testing Number 6a");
@@ -177,12 +192,13 @@ public class StringTest {
         System.out.println(removeComments(com));
         
         System.out.println("Testing Number 9");
-        String html = "<b>Strings are immutable</b>";
+        String html = "Strings are immutable</read>";
         System.out.println(removeTag(html));
         
+        System.out.println("Testing Number 10");
+        String isbn = "096548534X";
+        System.out.println(isValidISBN(isbn));
         
-        
-
     }
 
 }
