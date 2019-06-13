@@ -11,12 +11,9 @@ public class StringJumble {
 		this.str = str;
 	}
 	
-	String mixer(String input) {
+	static String mixer(String input) {
 		String cuts[] = new String[3];
 		String output = "";
-
-	
-		this.str = input;
 		for (int i = 0; i < 3; i++) {
 			int randomX = (int)(input.length() * Math.random());
 			int randomY = (int)(input.length() * Math.random());
@@ -33,7 +30,8 @@ public class StringJumble {
 	}
 
 	public static void main(String[] args) {
-		StringJumble jum = new StringJumble("eclipse");
+		StringJumble jum = new StringJumble("rhinoceros");
+		System.out.println(mixer(jum.str));
 	}
 
 }
